@@ -1,9 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
 import { centsToDollars } from "@/utils/centsToDollars";
 import { useRouter } from "next/router";
+import { useAppContext } from "@/context/AppContext";
 
 import Image from "next/image";
-import Loader from "@/components/Loader";
+import Loader from '@/components/Loader';
 
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
@@ -36,12 +37,16 @@ const GET_RESTAURANT_DISHES = gql`
 `;
 
 function DishCard({ data }) {
+  const { addItem, setShowCart } = useAppContext();
+
   function handleAddItem() {
-    // will add some logic here
+    addItem(data);
+    setShowCart(true);
   }
 
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+
       <div className="h-full bg-gray-100 rounded-2xl">
         <Image
           className="w-full rounded-2xl"
@@ -90,7 +95,7 @@ export default function Restaurant() {
     const { restaurant } = data;
 
     return (
-      <div className="py-6">
+      <div className='py-6'>
         <h1 className="text-4xl font-bold text-green-600">
           {restaurant.data.attributes.name}
         </h1>

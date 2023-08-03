@@ -37,6 +37,12 @@
       "relation": "manyToOne",
       "target": "api::restaurant.restaurant",
       "inversedBy": "dishes"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }
