@@ -4,8 +4,8 @@ const nextConfig = {
     images: {
       remotePatterns: [
         {
-          protocol: "http",
-          hostname: "dobie-fullstackrestaurantapplication.onrender.com/",
+          protocol: "https",
+          hostname: "dobie-fullstackrestaurantapplication.onrender.com",
           pathname: "/uploads/**",
         },
       ],

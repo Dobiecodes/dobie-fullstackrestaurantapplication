@@ -3,7 +3,7 @@ import { AppProvider } from "@/context/AppContext";
 import "@/pages/globals.css";
 import Layout from "@/components/Layout";
 
-const API_URL = process.env.STRAPI_URL || "https://dobie-fullstackrestaurantapplication.onrender.com/";
+const API_URL = process.env.STRAPI_URL || "https://dobie-fullstackrestaurantapplication.onrender.com";
 
 export const client = new ApolloClient({
   uri: `${API_URL}/graphql`,

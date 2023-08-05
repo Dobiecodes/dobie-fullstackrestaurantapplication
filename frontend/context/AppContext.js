@@ -17,8 +17,14 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userData = await getUser();
-      setUser(userData);
+      try {
+        const userData = await getUser();
+        setUser(userData);
+      } catch (error) {
+        // Handle authentication error here
+        setUser(null); // Clear the user data
+        Cookie.remove("token"); // Remove the token
+      }
     };
     fetchData();
   }, []);
